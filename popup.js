@@ -10,7 +10,7 @@ var visibleLinks = [];
 
 // Display all visible links.
 function showLinks() {
-  console.log('fuck')
+  console.log('fuck');
   //var elements = document.getElementsByClassName('someClass');
 
   var linksTable = document.getElementById('links');
@@ -93,6 +93,9 @@ function filterLinks() {
 // injected into all frames of the active tab, so this listener may be called
 // multiple times.
 chrome.extension.onRequest.addListener(function(links) {
+
+  console.log(links); 
+
   for (var index in links) {
     allLinks.push(links[index]);
   }
