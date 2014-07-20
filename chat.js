@@ -35,7 +35,7 @@ window.onload = function() {
       socket.emit('init_message', me);
     });
 
-    $('#class_name').text(info_to_send.class_name);
+    $('#class_name').text(info_to_send.class_name + ' Chat');
 
     // Received from the server
     socket.on('render_chat', function(content) {
@@ -81,7 +81,8 @@ window.onload = function() {
       userText.appendTo(wrapper);
 
       var timeText = $('<span/>').text('(' + time_string + '): ');
-      timeText.css('color', '#333').css('font-size', '0.8em');
+      timeText.css('color', '#8D8C8F');
+      timeText.css('font-size', '0.8em');
       timeText.appendTo(wrapper);
 
       var chatText = $('<span/>').text(text);
