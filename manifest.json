@@ -15,7 +15,8 @@
     }
   ],
   "background": {
-    "scripts": ["jquery.js", "background.js"]
+    "scripts": ["jquery.js", "jquery.min.js", "background.js"],
+    "web_accessible_resources": ["jquery.min.js"]
   },
   "web_accessible_resources": ["jquery.min.js"]
 }

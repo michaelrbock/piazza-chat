@@ -27,7 +27,7 @@ window.onload = function() {
     classId = classId.split('?')[0];
 
     me = {userId: info_to_send.user_full_name, klassId: classId,
-          klass: 'CSE 101', name: info_to_send.user_full_name};
+          klass: info_to_send.class_name, name: info_to_send.user_full_name};
 
     var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
 
