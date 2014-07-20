@@ -2,6 +2,7 @@
 var room;
 var me;
 
+
 window.onload = function() {
 
   var tablink;
@@ -79,5 +80,15 @@ window.onload = function() {
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
+
+    function open_video_chat_window(){
+      chrome.windows.create({
+        type: 'popup',
+        url: "https://www.google.co.in/"
+      });
+    }
+
+    $("button").bind("click", open_video_chat_window);
   });
+
 };
