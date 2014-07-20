@@ -43,10 +43,11 @@ function displayChatMessage(name, text, time) {
   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
 
-chrome.extension.onRequest.addListener(function(user_full_name) {
+chrome.extension.onRequest.addListener(function(info_to_send) {
 
-  console.log("chat.js received the user_full_name: " + user_full_name);
-  me.name = user_full_name;
+  console.log("chat.js received info: " + info_to_send);
+  me.name = info_to_send.user_full_name;
+  $('#class_name').text(info_to_send.class_name);
 });
 
 window.onload = function() {
