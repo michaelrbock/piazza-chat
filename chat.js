@@ -11,7 +11,7 @@ window.onload = function() {
     chrome.tabs.query({active: true, windowId: currentWindow.id},
                       function(activeTabs) {
       chrome.tabs.executeScript(
-        activeTabs[0].id, {file: 'send_links.js', allFrames: true});
+        activeTabs[0].id, {file: 'get_info.js', allFrames: true});
     });
     //to get class id
     chrome.tabs.getSelected(null,function(tab) {
