@@ -72,7 +72,20 @@ window.onload = function() {
     function displayChatMessage(name, text, time) {
       var date = new Date(time);
       var time_string = moment(date).format('h:mm:ss a');
-      $('<div/>').text(' (' + time_string + '): ' + text).prepend($('<em/>').text(name)).appendTo($('#messagesDiv'));
+
+      var wrapper = $('<div/>');
+      wrapper.appendTo($('#messagesDiv'));
+
+      var userText = $('<span/>').text(name + ' ');
+      userText.css('font-weight', 'bold')
+      userText.appendTo(wrapper);
+
+      var timeText = $('<span/>').text('(' + time_string + '): ');
+      timeText.css('color', '#333').css('font-size', '0.8em');
+      timeText.appendTo(wrapper);
+
+      var chatText = $('<span/>').text(text);
+      chatText.appendTo(wrapper);
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
