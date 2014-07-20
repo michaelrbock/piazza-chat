@@ -6,10 +6,43 @@
     <script src="moment.js"></script>
     <script src="chat.js"></script>
     <link rel='stylesheet' type='text/css' href='popup.css'>
+    <style>
+.button {
+   border: 0px solid #000000;
+   background: #8d8e8f;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#8d8e8f));
+   background: -webkit-linear-gradient(top, #fafafa, #8d8e8f);
+   background: -moz-linear-gradient(top, #fafafa, #8d8e8f);
+   background: -ms-linear-gradient(top, #fafafa, #8d8e8f);
+   background: -o-linear-gradient(top, #fafafa, #8d8e8f);
+   padding: 5px 10px;
+   -webkit-border-radius: 4px;
+   -moz-border-radius: 4px;
+   border-radius: 4px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: white;
+   font-size: 15px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-color: #7c8285;
+   background: #7c8285;
+   color: #ccc;
+   }
+.button:active {
+   border-color: #696969;
+   background: #696969;
+   }
+    </style>
   </head>
   <body style="zoom: 1;height: 500px; background: #3e7aab;">
     <h3 id='class_name' style="margin-top: 1px; margin-bottom: 5px; color: white;">Chat</h3>
-    <button id='videoChatButton' type="button" value="tab" tabindex="-1">Video Chat</button>
+    <button class="button" id='videoChatButton' type="button" value="tab" tabindex="-1">Video Chat</button>
     <div id='messagesDiv' style="height: 450px;" autofocus="autofocus"></div>
     <input type='text' id='messageInput' placeholder='Message'>
   </body>
