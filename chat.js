@@ -2,7 +2,6 @@
 var room;
 var me;
 
-
 window.onload = function() {
 
   var tablink;
@@ -30,8 +29,6 @@ window.onload = function() {
 
     var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
 
-
-
     socket.on('connect', function(){
       socket.emit('init_message', me);
     });
@@ -49,7 +46,6 @@ window.onload = function() {
         displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content,
           Date.parse(content.room.messages[i].time));
       }
-      // displayChatMessage(content.name, content.text);
     });
 
     // Sent to the server
@@ -63,7 +59,6 @@ window.onload = function() {
       socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});
     }
 
-    // var myDataRef = new Firebase('https://qpv6vlip1d8.firebaseio-demo.com/');
     $('#messageInput').keypress(function (e) {
       if (e.keyCode == 13 && $("#messageInput").val() != "") {
         var text = $('#messageInput').val();
@@ -78,7 +73,6 @@ window.onload = function() {
       $('<div/>').text('(' + time_string + '): ' + text).prepend($('<em/>').text(name)).appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
-
 
     function open_video_chat_window(){
       chrome.windows.create({
