@@ -72,7 +72,7 @@ window.onload = function() {
     function displayChatMessage(name, text, time) {
       var date = new Date(time);
       var time_string = moment(date).format('h:mm:ss a');
-      $('<div/>').text('(' + time_string + '): ' + text).prepend($('<em/>').text(name)).appendTo($('#messagesDiv'));
+      $('<div/>').text(' (' + time_string + '): ' + text).prepend($('<em/>').text(name)).appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
@@ -84,7 +84,7 @@ window.onload = function() {
     }
 
     $("button").bind("click", function() {
-      open_video_chat_window('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:8080/?klassId='+me.klassId+'&userId='+me.userId);
+      open_video_chat_window('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456/?klassId='+me.klassId+'&userId='+me.userId);
     });
 
   });
