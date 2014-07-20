@@ -1,11 +1,18 @@
 {
-  "name": "Download Selected Links",
+  "name": "Piazza Chat",
   "description": "Select links on a page and download them.",
   "version": "0.1",
+  "icons": {
+    "16": "icon-piazza.png",
+    "48": "icon-piazza.png",
+    "128": "icon-piazza.png"
+  },
   "minimum_chrome_version": "16.0.884",
   "permissions": ["https://piazza.com/*", "tabs"],
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup.html",
+    "default_icon": "icon-piazza.png",
+    "default_title": "Piazza Chat"
   },
   "manifest_version": 2,
   "content_scripts": [
