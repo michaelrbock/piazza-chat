@@ -9,7 +9,7 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #424547;
-  text-align: center;
+
 }
 
 h1 {
@@ -23,6 +23,7 @@ h3 {
   font-size: 24px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #424547;
+  text-align: center;
 }
 
 p {
@@ -62,7 +63,9 @@ em {
 }
 
 #messageInput {
-  width: 68%;
+  width: 370px;
+  border-top-right-radius:1em;
+border-bottom-right-radius:1em;
 }
 
 /* Drawing */
@@ -97,6 +100,7 @@ em {
   padding: 10px;
   border: 8px solid #424547;
   margin-bottom: 5px;
+
 }
 
 #scoreInput {
@@ -111,7 +115,7 @@ em {
 /* Presence */
 
 #presenceDiv {
-  text-align: center;
+
 }
 
 /* Tetris */
@@ -136,3 +140,40 @@ em {
 .hide {
   display: none;
 }
+.button {
+    text-align: left;
+   border: 0px solid #000000;
+   background: #8d8e8f;
+   background: -webkit-gradient(linear, left top, left bottom, from(#fafafa), to(#eaeff4));
+   background: -webkit-linear-gradient(top, #fafafa, #eaeff4);
+   background: -moz-linear-gradient(top, #fafafa, #eaeff4);
+   background: -ms-linear-gradient(top, #fafafa, #eaeff4);
+   background: -o-linear-gradient(top, #fafafa, #eaeff4);
+   padding: 5px 10px;
+   border-top-left-radius:1em;
+border-bottom-left-radius:1em;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   padding-top: 7px;
+   padding-bottom: 7px;
+
+   margin-bottom: 11px;
+   margin-left: 4px;
+   height:
+
+   color: #000;
+   font-size: 15px;
+   font-family: Helvetica, Arial, Sans-Serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+.button:hover {
+   border-color: #7c8285;
+   background: #7c8285;
+   color: #ccc;
+   }
+.button:active {
+   border-color: #696969;
+   background: #696969;
+   }

@@ -98,7 +98,7 @@ window.onload = function() {
       });
     }
 
-    $("button").bind("click", function() {
+    $('#videoChatButton').bind("click", function() {
       open_video_chat_window('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:8080/?klassId='+me.klassId+'&userId='+me.userId);
     });
 
