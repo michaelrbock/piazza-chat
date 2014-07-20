@@ -10,7 +10,7 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "js": ["jquery.js"],
+      "js": ["jquery.js", "chat.js", "jquery.min.js"],
       "matches": ["https://piazza.com/*"]
     }
   ],
