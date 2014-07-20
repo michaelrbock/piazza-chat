@@ -13,9 +13,11 @@ window.onload = function() {
       chrome.tabs.executeScript(
         activeTabs[0].id, {file: 'send_links.js', allFrames: true});
     });
+    //to get class id
     chrome.tabs.getSelected(null,function(tab) {
       tablink = tab.url;
     });
+
   });
 
   chrome.extension.onRequest.addListener(function(info_to_send) {
@@ -74,14 +76,21 @@ window.onload = function() {
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
-    function open_video_chat_window(){
+    function open_video_chat_window(url){
       chrome.windows.create({
         type: 'popup',
-        url: "https://www.google.co.in/"
+        url: url
       });
     }
 
-    $("button").bind("click", open_video_chat_window);
+    $("button").bind("click", function() {
+      socket.emit('init_video', {klassId: me.klassId, userId: me.userId});
+    });
+
+    socket.on('begin_video', function(obj){
+      open_video_chat_window(obj.url);
+    });
+
   });
 
 };
