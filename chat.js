@@ -22,16 +22,15 @@ window.onload = function() {
   chrome.extension.onRequest.addListener(function(info_to_send) {
     console.log("chat.js received info: " + info_to_send);
 
-    //var randInt = Math.random()*10000;
-    me = {userId: '1', klassId: '200', klass: 'CSE 101', name: 'User'};
+    var classId = tablink.split('class/')[1];
+    classId = classId.split('?')[0];
+
+    me = {userId: info_to_send.user_full_name, klassId: classId,
+          klass: 'CSE 101', name: info_to_send.user_full_name};
 
     var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
 
-    me.name = info_to_send.user_full_name;
-    me.userId = info_to_send.user_full_name; //+ randInt.toString();
-    var classId = tablink.split('class/')[1];
-    classId = classId.split('?')[0];
-    me.klassId = classId;
+
 
     socket.on('connect', function(){
       socket.emit('init_message', me);
