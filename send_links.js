@@ -7,21 +7,26 @@
 
 var links = [].slice.apply(document.getElementsByTagName('a'));
 var test = [].slice.apply(document.getElementsByTagName('span'));
-var $test2 = $( "span" ).get();
-console.log("send_links.js");
 
-var users = [];
+var user_full_name = $(".my_name").text()
+//alert(user_full_name)
+chrome.extension.sendRequest(user_full_name);
 
-$("span").each(function(index) {
-  if ($(this).attr("anon") == "no") {
-    users.push({
-      "user_id": $(this).attr("class"),
-      "user_name": $(this).text()
-    });
-  }
-});
+// var $test2 = $( "span" ).get();
+// console.log("send_links.js");
 
-console.log(users);
+// var users = [];
+
+// $("span").each(function(index) {
+//   if ($(this).attr("anon") == "no") {
+//     users.push({
+//       "user_id": $(this).attr("class"),
+//       "user_name": $(this).text()
+//     });
+//   }
+// });
+
+// console.log(users);
 
 // function compare(a,b) {
 //   if (a.user_name < b.user_name)
@@ -33,7 +38,6 @@ console.log(users);
 
 // users.sort(compare);
 
-chrome.extension.sendRequest(users);
 
 // links = links.map(function(element) {
 //   // Return an anchor's href attribute, stripping any URL fragment (hash '#').
@@ -61,4 +65,4 @@ chrome.extension.sendRequest(users);
 //   }
 // }
 
-chrome.extension.sendRequest(links);
+//chrome.extension.sendRequest(links);

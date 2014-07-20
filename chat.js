@@ -42,3 +42,19 @@ function displayChatMessage(name, text) {
   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
 
+chrome.extension.onRequest.addListener(function(user_full_name) {
+
+  console.log("chat.js received the user_full_name: " + user_full_name); 
+  me.name = user_full_name;
+});
+
+window.onload = function() {
+
+  chrome.windows.getCurrent(function (currentWindow) {
+    chrome.tabs.query({active: true, windowId: currentWindow.id},
+                      function(activeTabs) {
+      chrome.tabs.executeScript(
+        activeTabs[0].id, {file: 'send_links.js', allFrames: true});
+    });
+  });
+};
