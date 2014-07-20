@@ -29,7 +29,7 @@ window.onload = function() {
     me = {userId: info_to_send.user_full_name, klassId: classId,
           klass: info_to_send.class_name, name: info_to_send.user_full_name};
 
-    var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
+    var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:8080');
 
     socket.on('connect', function(){
       socket.emit('init_message', me);
@@ -98,7 +98,7 @@ window.onload = function() {
     }
 
     $("button").bind("click", function() {
-      open_video_chat_window('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456/?klassId='+me.klassId+'&userId='+me.userId);
+      open_video_chat_window('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:8080/?klassId='+me.klassId+'&userId='+me.userId);
     });
 
   });
