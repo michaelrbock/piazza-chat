@@ -13,14 +13,15 @@ socket.on('render_chat', function(content) {
   console.log(content);
   $("#messagesDiv").text("");
   for (var i = 0; i < content.room.messages.length; ++i) {
-    displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content);
+    displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content,
+      content.room.messages[i]);
   }
   // displayChatMessage(content.name, content.text);
 });
 
 // Sent to the server
 function sendMessage(message) {
-    socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});               
+    socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});
 }
 
 
@@ -37,14 +38,14 @@ $('#messageInput').keypress(function (e) {
 //   var message = snapshot.val();
 //   displayChatMessage(message.name, message.text);
 // });
-function displayChatMessage(name, text) {
-  $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+function displayChatMessage(name, text, time) {
+  $('<div/>').text(text + '(' + time + ')').prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
 
 chrome.extension.onRequest.addListener(function(user_full_name) {
 
-  console.log("chat.js received the user_full_name: " + user_full_name); 
+  console.log("chat.js received the user_full_name: " + user_full_name);
   me.name = user_full_name;
 });
 
