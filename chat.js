@@ -1,7 +1,10 @@
 
 var room;
+var me;
 
 window.onload = function() {
+
+  var tablink;
 
   console.log('running the onload thing');
   chrome.windows.getCurrent(function (currentWindow) {
@@ -10,24 +13,30 @@ window.onload = function() {
       chrome.tabs.executeScript(
         activeTabs[0].id, {file: 'send_links.js', allFrames: true});
     });
+    chrome.tabs.getSelected(null,function(tab) {
+      tablink = tab.url;
+    });
   });
 
   chrome.extension.onRequest.addListener(function(info_to_send) {
     console.log("chat.js received info: " + info_to_send);
 
     //var randInt = Math.random()*10000;
-    var me = {userId: '1', klassId: '200', klass: 'CSE 101', name: 'User'};
+    me = {userId: '1', klassId: '200', klass: 'CSE 101', name: 'User'};
 
     var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
 
-
     me.name = info_to_send.user_full_name;
     me.userId = info_to_send.user_full_name; //+ randInt.toString();
-    $('#class_name').text(info_to_send.class_name);
+    var classId = tablink.split('class/')[1];
+    classId = classId.split('?')[0];
+    me.klassId = classId;
 
     socket.on('connect', function(){
       socket.emit('init_message', me);
     });
+
+    $('#class_name').text(info_to_send.class_name);
 
     // Received from the server
     socket.on('render_chat', function(content) {

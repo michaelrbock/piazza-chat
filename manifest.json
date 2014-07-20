@@ -3,7 +3,7 @@
   "description": "Select links on a page and download them.",
   "version": "0.1",
   "minimum_chrome_version": "16.0.884",
-  "permissions": ["https://piazza.com/*"],
+  "permissions": ["https://piazza.com/*", "tabs"],
   "browser_action": {
     "default_popup": "popup.html"
   },
@@ -16,5 +16,6 @@
   ],
   "background": {
     "scripts": ["jquery.js", "background.js"]
-  }
+  },
+  "web_accessible_resources": ["jquery.min.js"]
 }

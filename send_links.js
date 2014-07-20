@@ -5,14 +5,15 @@
 // Send back to the popup a sorted deduped list of valid link URLs on this page.
 // The popup injects this script into all frames in the active tab.
 
-var links = [].slice.apply(document.getElementsByTagName('a'));
-var test = [].slice.apply(document.getElementsByTagName('span'));
+// var links = [].slice.apply(document.getElementsByTagName('a'));
+// var test = [].slice.apply(document.getElementsByTagName('span'));
 
 var user_full_name = $(".my_name").text();
 var class_name = $(".current_class_name").text();
+
 var info_to_send = {
-	'user_full_name': user_full_name,
-	'class_name': class_name
+  'user_full_name': user_full_name,
+  'class_name': class_name
 };
 //alert(user_full_name)
 chrome.extension.sendRequest(info_to_send);
