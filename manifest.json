@@ -10,7 +10,7 @@
   "manifest_version": 2,
   "content_scripts": [
     {
-      "js": ["jquery.js", "chat.js", "jquery.min.js", "socket.io-1.0.6.js"],
+      "js": ["jquery.js", "chat.js", "moment.js", "jquery.min.js", "socket.io-1.0.6.js"],
       "matches": ["https://piazza.com/*"]
     }
   ],

@@ -1,4 +1,6 @@
 
+var room;
+
 window.onload = function() {
 
   console.log('running the onload thing');
@@ -14,7 +16,6 @@ window.onload = function() {
     console.log("chat.js received info: " + info_to_send);
 
     //var randInt = Math.random()*10000;
-    var room;
     var me = {userId: '1', klassId: '200', klass: 'CSE 101', name: 'User'};
 
     var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
@@ -36,7 +37,7 @@ window.onload = function() {
       $("#messagesDiv").text("");
       for (var i = 0; i < content.room.messages.length; ++i) {
         displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content,
-          content.room.messages[i].time);
+          Date.parse(content.room.messages[i].time));
       }
       // displayChatMessage(content.name, content.text);
     });
@@ -62,7 +63,9 @@ window.onload = function() {
     });
 
     function displayChatMessage(name, text, time) {
-      $('<div/>').text(text + '(' + time + ')').prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
+      var date = new Date(time);
+      var time_string = moment(date).format('h:mm:ss a');
+      $('<div/>').text('(' + time_string + '): ' + text).prepend($('<em/>').text(name)).appendTo($('#messagesDiv'));
       $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
     };
 
