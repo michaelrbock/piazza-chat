@@ -18,6 +18,8 @@ socket.on('render_chat', function(content) {
 
 // Sent to the server
 function sendMessage(message) {
+    // terrible hack to wait till room is defined
+    while (!room);
     socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});
 }
 
