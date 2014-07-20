@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title><!--TODO: change title -->some title</title>
+		 
+		<script src="https://cdn.socket.io/socket.io-1.0.6.js"></script>
+
+		<script type="text/javascript">
+			var room;
+			var me = {userId: '100', klassId: '200', klass: 'CSE 101', name: 'Garrett Bourg'};
+
+			var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
+			socket.on('connect', function(){
+				socket.emit('init_message', me);
+			});
+
+			// Received from the server
+			socket.on('render_chat', function(content) {
+				// content : {room: room, content: 'some string'}
+				room = content.room;
+				console.log(content);
+			});
+
+			// Sent to the server
+			function sendMessage(message) {
+				socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});				
+			}
+
+
+		</script>
+	</head>
+	<body>
+		<ul id="messages">
+		</ul>
+		 
+		<p>
+			<textarea id="comment"></textarea>
+			<button id="send">Send Comment</button>
+		</p>
+	</body>
+</html>
