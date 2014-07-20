@@ -1,17 +1,44 @@
-var myDataRef = new Firebase('https://qpv6vlip1d8.firebaseio-demo.com/');
+var room;
+var me = {userId: '100', klassId: '200', klass: 'CSE 101', name: 'Garrett Bourg'};
+
+var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
+socket.on('connect', function(){
+    socket.emit('init_message', me);
+});
+
+// Received from the server
+socket.on('render_chat', function(content) {
+  // content : {room: room, content: 'some string'}
+  room = content.room;
+  console.log(content);
+  $("#messagesDiv").text("");
+  for (var i = 0; i < content.room.messages.length; ++i) {
+    displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content);
+  }
+  // displayChatMessage(content.name, content.text);
+});
+
+// Sent to the server
+function sendMessage(message) {
+    socket.emit('send_message', {content: message, room: room, messageType: 'chat', poster: me});               
+}
+
+
+
+// var myDataRef = new Firebase('https://qpv6vlip1d8.firebaseio-demo.com/');
 $('#messageInput').keypress(function (e) {
-  if (e.keyCode == 13) {
-    var name = $('#nameInput').val();
+  if (e.keyCode == 13 && $("#messageInput").val() != "") {
     var text = $('#messageInput').val();
-    myDataRef.push({name: name, text: text});
+    sendMessage(text);
     $('#messageInput').val('');
   }
 });
-myDataRef.on('child_added', function(snapshot) {
-  var message = snapshot.val();
-  displayChatMessage(message.name, message.text);
-});
+// myDataRef.on('child_added', function(snapshot) {
+//   var message = snapshot.val();
+//   displayChatMessage(message.name, message.text);
+// });
 function displayChatMessage(name, text) {
   $('<div/>').text(text).prepend($('<em/>').text(name+': ')).appendTo($('#messagesDiv'));
   $('#messagesDiv')[0].scrollTop = $('#messagesDiv')[0].scrollHeight;
 };
+
