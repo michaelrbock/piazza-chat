@@ -20,10 +20,5 @@
       "js": ["jquery.js", "chat.js", "moment.js", "jquery.min.js", "socket.io-1.0.6.js"],
       "matches": ["https://piazza.com/*"]
     }
-  ],
-  "background": {
-    "scripts": ["jquery.js", "jquery.min.js", "background.js"],
-    "web_accessible_resources": ["jquery.min.js"]
-  },
-  "web_accessible_resources": ["jquery.min.js"]
+  ]
 }
