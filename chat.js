@@ -93,7 +93,8 @@ window.onload = function() {
     function open_video_chat_window(url){
       chrome.windows.create({
         type: 'popup',
-        url: url
+        url: url,
+        width: 850
       });
     }
 
