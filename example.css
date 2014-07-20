@@ -6,7 +6,7 @@ body {
   margin-right: auto;
   width: 500px;
   background-color: #f8f8f8;
-  font-size: 24px;
+  font-size: 14px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #424547;
   text-align: center;
@@ -49,7 +49,7 @@ em {
 #messagesDiv {
   background-color: white;
   overflow: auto;
-  height: 230px;
+  height: 480px;
   width: 94%;
   padding: 10px;
   border: 5px solid #424547;
