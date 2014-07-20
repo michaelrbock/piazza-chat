@@ -1,10 +1,7 @@
 var room;
-var me = {userId: '100', klassId: '200', klass: 'CS 101', name: 'User'};
+var me = {userId: '1', klassId: '200', klass: 'CS 101', name: 'User'};
 
 var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
-socket.on('connect', function(){
-    socket.emit('init_message', me);
-});
 
 // Received from the server
 socket.on('render_chat', function(content) {
@@ -47,7 +44,12 @@ chrome.extension.onRequest.addListener(function(info_to_send) {
 
   console.log("chat.js received info: " + info_to_send);
   me.name = info_to_send.user_full_name;
+  me.userId = info_to_send.user_full_name;
   $('#class_name').text(info_to_send.class_name);
+
+  socket.on('connect', function(){
+    socket.emit('init_message', me);
+  });
 });
 
 window.onload = function() {
