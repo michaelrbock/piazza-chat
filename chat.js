@@ -1,5 +1,5 @@
 var room;
-var me = {userId: '1', klassId: '200', klass: 'CS 101', name: 'User'};
+var me = {userId: '1', klassId: '200', klass: 'CSE 101', name: 'User'};
 
 var socket = io.connect('http://ec2-54-186-60-145.us-west-2.compute.amazonaws.com:3456');
 
@@ -50,6 +50,7 @@ chrome.extension.onRequest.addListener(function(info_to_send) {
   socket.on('connect', function(){
     socket.emit('init_message', me);
   });
+
 });
 
 window.onload = function() {
