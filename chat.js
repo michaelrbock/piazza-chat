@@ -35,7 +35,7 @@ window.onload = function() {
       room = content.room;
       console.log(content);
       $("#messagesDiv").text("");
-      content.room.messages.slice(content.room.messages.length-50, content.room.messages.length-1)
+      content.room.messages.slice(content.room.messages.length-50, content.room.messages.length-1);
       for (var i = 0; i < content.room.messages.length; ++i) {
         displayChatMessage(content.room.messages[i].poster.name, content.room.messages[i].content,
           Date.parse(content.room.messages[i].time));
